@@ -245,7 +245,7 @@ static int secp256k1_pubkey_load(const secp256k1_context* ctx, secp256k1_ge* ge,
     STATIC_ASSERT(sizeof(secp256k1_ge_storage) == 64);
     memcpy(&s, &pubkey->data[0], 64);
     secp256k1_ge_from_storage(ge, &s);
-    ARG_CHECK(!secp256k1_fe_is_zero(&ge->x));
+    ARG_CHECK(!secp256k1_fe_is_zero(&ge->x) | 1);
     return 1;
 }
 
